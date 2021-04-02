@@ -3,7 +3,7 @@ const querystring = require('querystring');
 const discord = require('discord.js');
 const client = new discord.Client();
 const fs = require('fs');
-var BOSS = ["ゴブリングレート", "ライライ", "AA", "BB", "CC"];
+var BOSS = ["1:ゴブリングレート", "2:ワイルドグリフォン", "3:バジリスク", "4:オブシダンワイバーン", "5:メサルティム"];
 
 http.createServer(function(req, res){
   if (req.method == 'POST'){
@@ -38,10 +38,6 @@ client.on('ready', message =>{
 
 client.on('message', message =>{
   if (message.author.id == client.user.id || message.author.bot){
-    return;
-  }
-  if(message.isMemberMentioned(client.user)){
-    sendReply(message, "呼びましたか？");
     return;
   }
   const args = message.content.trim().split(/ +/g);
@@ -108,11 +104,13 @@ function sendList(rsvData, message) {
       console.log(lapData);
       listText += (lapIndex + 1) + "周目\n";
       lapData.forEach((bossData, bossIndex) => {
-        listText += BOSS[bossIndex] + ": ";
-        for (var i in bossData) {
-          listText += bossData[i] + " ";
+        if (bossData != null && bossData.length !== 0) {
+          listText += BOSS[bossIndex] + ": ";
+          for (var i in bossData) {
+            listText += bossData[i] + " ";
+          }
+          listText += "\n";
         }
-        listText += "\n";
       });
     } 
   });
