@@ -3,7 +3,7 @@ const querystring = require('querystring');
 const discord = require('discord.js');
 const client = new discord.Client();
 const fs = require('fs');
-var BOSS = ["1:ゴブリングレート", "2:ワイルドグリフォン", "3:バジリスク", "4:オブシダンワイバーン", "5:メサルティム"];
+var BOSS = ["1:ゴブリングレート", "2:ワイルドグリフォン", "3:ニードルクリーパー", "4:ティタノタートル", "5:ミノタウロス"];
 
 http.createServer(function(req, res){
   if (req.method == 'POST'){
